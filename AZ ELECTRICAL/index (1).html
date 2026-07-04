@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZ Electrical Services Enterprise | Power. Precision. Performance.</title>
+<meta name="description" content="AZ Electrical Services Enterprise — licensed electrical & electronic engineering services: installation, industrial wiring, solar & automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#071B2E;
+    --navy:#0A2540;
+    --navy-deep:#061829;
+    --blue:#1568B8;
+    --blue-bright:#3B9EF0;
+    --gold:#D4AF37;
+    --gold-soft:#E9CD6B;
+    --orange:#E8720C;
+    --yellow:#F5B700;
+    --white:#FFFFFF;
+    --offwhite:#F5F8FC;
+    --paper:#EEF3F9;
+    --line:rgba(255,255,255,0.09);
+    --line-dark:rgba(7,27,46,0.10);
+    --shadow:0 20px 45px rgba(7,27,46,0.14);
+    --radius:14px;
+    --maxw:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--offwhite);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Rajdhani',sans-serif;
+    font-weight:700;
+    letter-spacing:0.01em;
+    margin:0;
+    color:var(--navy);
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  p{margin:0;line-height:1.65;color:#3A4B5C;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{position:relative;}
+  ::selection{background:var(--gold);color:var(--navy-deep);}
+
+  /* focus visibility */
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+    outline:2px solid var(--orange);outline-offset:3px;
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- logo mark ---------- */
+  .logo-mark{width:44px;height:44px;flex-shrink:0;}
+  .logo-group{display:flex;align-items:center;gap:12px;}
+  .logo-word{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:16px;line-height:1.1;color:var(--white);letter-spacing:0.02em;}
+  .logo-word span{display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:9.5px;letter-spacing:0.16em;color:var(--gold-soft);margin-top:2px;}
+  header .logo-word{color:var(--navy);}
+  header .logo-word span{color:var(--blue);}
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(255,255,255,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-dark);
+    transition:box-shadow .3s ease, padding .3s ease;
+  }
+  header.scrolled{box-shadow:0 6px 24px rgba(7,27,46,0.08);}
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  header .logo-mark{width:38px;height:38px;}
+  nav.links{display:flex;gap:34px;}
+  nav.links a{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;
+    letter-spacing:0.06em;text-transform:uppercase;color:var(--navy);
+    position:relative;padding:6px 0;
+  }
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+    background:var(--orange);transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--navy);color:var(--white)!important;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;
+    letter-spacing:0.05em;text-transform:uppercase;
+    padding:11px 20px;border-radius:8px;border:1px solid var(--navy);
+    transition:background .25s ease, transform .2s ease;
+  }
+  .nav-cta:hover{background:var(--orange);border-color:var(--orange);transform:translateY(-2px);}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
+  .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s;}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;padding:168px 0 120px;overflow:hidden;
+    background:radial-gradient(ellipse at 20% -10%, #123a63 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    color:var(--white);
+  }
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:50px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--gold-soft);margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(232,114,12,0.25);animation:pulseDot 1.8s infinite;}
+  @keyframes pulseDot{0%,100%{box-shadow:0 0 0 4px rgba(232,114,12,0.25);}50%{box-shadow:0 0 0 8px rgba(232,114,12,0.05);}}
+  .hero h1{font-size:clamp(34px,5vw,58px);line-height:1.06;color:var(--white);}
+  .hero h1 em{font-style:normal;color:var(--yellow);}
+  .hero p.lead{margin-top:22px;max-width:480px;color:#C9D8E8;font-size:16.5px;}
+  .hero-cta{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:9px;
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;border:1.5px solid transparent;
+  }
+  .btn-primary{background:linear-gradient(120deg,var(--orange),var(--gold));color:var(--navy-deep);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(232,114,12,0.35);}
+  .btn-ghost{border-color:rgba(255,255,255,0.35);color:var(--white);}
+  .btn-ghost:hover{border-color:var(--gold-soft);background:rgba(255,255,255,0.06);}
+  .hero-meta{display:flex;gap:28px;margin-top:44px;flex-wrap:wrap;}
+  .hero-meta div{border-left:2px solid rgba(255,255,255,0.18);padding-left:14px;}
+  .hero-meta strong{display:block;font-family:'Rajdhani',sans-serif;font-size:24px;color:var(--white);}
+  .hero-meta span{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.05em;color:#9FB4CB;text-transform:uppercase;}
+
+  /* circuit visual */
+  .circuit-wrap{position:relative;z-index:2;aspect-ratio:1/1;max-width:460px;justify-self:center;width:100%;}
+  .circuit-wrap svg{width:100%;height:100%;}
+  .circuit-line{fill:none;stroke:rgba(255,255,255,0.14);stroke-width:1.6;}
+  .circuit-pulse{fill:none;stroke:var(--yellow);stroke-width:2.2;stroke-linecap:round;
+    stroke-dasharray:14 380;filter:drop-shadow(0 0 6px rgba(245,183,0,0.9));
+    animation:travel 4.2s linear infinite;}
+  .circuit-pulse.p2{stroke:var(--orange);animation-duration:5.4s;animation-delay:.6s;filter:drop-shadow(0 0 6px rgba(232,114,12,0.9));}
+  .circuit-pulse.p3{stroke:var(--gold-soft);animation-duration:3.6s;animation-delay:1.3s;filter:drop-shadow(0 0 6px rgba(233,205,107,0.9));}
+  @keyframes travel{to{stroke-dashoffset:-800;}}
+  .circuit-node{fill:var(--navy-deep);stroke:var(--blue-bright);stroke-width:1.4;}
+  .circuit-node.lit{animation:litNode 3s ease-in-out infinite;}
+  @keyframes litNode{0%,100%{fill:var(--navy-deep);}50%{fill:var(--gold);}}
+  .hero-bg-fade{position:absolute;inset:0;background:
+    radial-gradient(circle at 85% 20%, rgba(21,104,184,0.35), transparent 55%),
+    radial-gradient(circle at 10% 90%, rgba(212,175,55,0.12), transparent 50%);
+    z-index:1;}
+
+  /* ---------- section headers ---------- */
+  .section-head{max-width:620px;margin-bottom:52px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .tag{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--orange);margin-bottom:12px;
+  }
+  .section-head h2{font-size:clamp(26px,3.4vw,38px);}
+  .section-head p{margin-top:14px;font-size:16px;}
+
+  /* ---------- stats ---------- */
+  .stats{background:var(--navy-deep);padding:0;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{
+    padding:44px 20px;text-align:center;border-right:1px solid var(--line);
+  }
+  .stat:last-child{border-right:none;}
+  .stat strong{
+    display:block;font-family:'IBM Plex Mono',monospace;font-weight:600;
+    font-size:clamp(26px,3vw,38px);color:var(--gold-soft);
+  }
+  .stat span{display:block;margin-top:8px;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#9FB4CB;font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- services ---------- */
+  .services{padding:110px 0 90px;}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{
+    background:var(--white);border:1px solid #E2E9F1;border-radius:var(--radius);
+    padding:32px 26px;transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    position:relative;overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--blue),var(--gold),var(--orange));
+    transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent;}
+  .card:hover::before{transform:scaleX(1);}
+  .card .icon{width:46px;height:46px;margin-bottom:20px;}
+  .card h3{font-size:20px;margin-bottom:10px;}
+  .card p{font-size:14.5px;}
+  .card .num{
+    position:absolute;top:22px;right:24px;font-family:'IBM Plex Mono',monospace;
+    font-size:12px;color:#C3CEDA;letter-spacing:0.05em;
+  }
+
+  /* ---------- process ---------- */
+  .process{background:var(--paper);padding:100px 0;}
+  .step-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;}
+  .step-row::before{
+    content:"";position:absolute;top:27px;left:8%;right:8%;height:2px;
+    background:repeating-linear-gradient(90deg,#C7D3E0 0 8px, transparent 8px 14px);
+    z-index:0;
+  }
+  .step{position:relative;z-index:1;padding-right:8px;}
+  .step .idx{
+    width:56px;height:56px;border-radius:50%;background:var(--navy);color:var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;
+    font-size:16px;font-weight:600;margin-bottom:20px;border:3px solid var(--paper);
+    box-shadow:0 0 0 1px #C7D3E0;
+  }
+  .step h3{font-size:18px;margin-bottom:8px;}
+  .step p{font-size:14px;}
+
+  /* ---------- projects ---------- */
+  .projects{padding:110px 0 90px;}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .proj-card{
+    border-radius:var(--radius);overflow:hidden;background:var(--navy-deep);position:relative;
+    aspect-ratio:4/3;
+  }
+  .proj-visual{position:absolute;inset:0;}
+  .proj-card .overlay{
+    position:absolute;inset:0;background:linear-gradient(to top, rgba(6,24,41,0.94) 10%, rgba(6,24,41,0.15) 65%);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:22px;
+  }
+  .proj-card .tagline{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:6px;}
+  .proj-card h3{color:var(--white);font-size:19px;}
+  .proj-card p{color:#B9C8D8;font-size:13px;margin-top:6px;}
+
+  /* ---------- about ---------- */
+  .about{padding:100px 0;background:var(--white);}
+  .about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:center;}
+  .about-badge{
+    width:100%;aspect-ratio:1/1.05;border-radius:20px;
+    background:linear-gradient(155deg,var(--navy),var(--navy-deep));
+    position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  }
+  .about-badge svg{width:62%;}
+  .about-badge::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 22px);
+  }
+  .about ul.creds{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .about ul.creds li{
+    display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#3A4B5C;
+  }
+  .about ul.creds li svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--orange);}
+
+  /* ---------- testimonials ---------- */
+  .testimonials{background:var(--navy-deep);padding:100px 0;color:var(--white);}
+  .test-track{display:grid;grid-template-columns:1fr;gap:0;position:relative;min-height:190px;}
+  .test-slide{
+    grid-column:1;grid-row:1;opacity:0;transform:translateX(16px);
+    transition:opacity .5s ease, transform .5s ease;pointer-events:none;
+  }
+  .test-slide.active{opacity:1;transform:translateX(0);pointer-events:auto;}
+  .test-slide p.quote{font-family:'Rajdhani',sans-serif;font-size:clamp(19px,2.4vw,26px);font-weight:600;color:var(--white);line-height:1.5;max-width:820px;}
+  .test-slide .who{margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--gold-soft);letter-spacing:0.04em;}
+  .test-dots{display:flex;gap:10px;margin-top:38px;}
+  .test-dots button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.25);border:none;padding:0;}
+  .test-dots button.active{background:var(--orange);width:24px;border-radius:5px;transition:.3s;}
+
+  /* ---------- contact ---------- */
+  .contact{padding:110px 0;background:var(--paper);}
+  .contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:50px;}
+  .info-card{background:var(--white);border-radius:var(--radius);padding:26px;margin-bottom:16px;border:1px solid #E2E9F1;display:flex;gap:16px;align-items:flex-start;}
+  .info-card svg{width:22px;height:22px;color:var(--orange);flex-shrink:0;margin-top:2px;}
+  .info-card h4{font-size:15px;margin-bottom:4px;}
+  .info-card p{font-size:14px;}
+  form.quote{background:var(--white);border-radius:var(--radius);padding:36px;border:1px solid #E2E9F1;box-shadow:var(--shadow);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field.full{grid-column:1/-1;}
+  label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#5C6E80;}
+  input,select,textarea{
+    border:1.5px solid #D9E2EC;border-radius:8px;padding:12px 14px;font-family:'Inter',sans-serif;
+    font-size:14.5px;color:var(--ink);background:var(--offwhite);transition:border-color .2s ease, background .2s ease;
+  }
+  input:focus,select:focus,textarea:focus{border-color:var(--blue);background:var(--white);outline:none;}
+  textarea{resize:vertical;min-height:100px;}
+  .submit-btn{
+    width:100%;margin-top:6px;padding:15px;border-radius:9px;border:none;
+    background:linear-gradient(120deg,var(--blue),var(--navy));color:var(--white);
+    font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .submit-btn:hover{transform:translateY(-2px);box-shadow:0 14px 26px rgba(10,37,64,0.28);}
+  .form-success{
+    display:none;margin-top:14px;padding:13px 16px;border-radius:8px;background:#EAF6EC;
+    color:#1E6B34;font-size:13.5px;border:1px solid #BFE3C6;
+  }
+  .form-success.show{display:block;}
+  .field-error{font-size:12px;color:var(--orange);display:none;}
+  .field.error input,.field.error select,.field.error textarea{border-color:var(--orange);}
+  .field.error .field-error{display:block;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-deep);color:#B9C8D8;padding:64px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 0.9fr 0.9fr 1.1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--line);}
+  footer h4{color:var(--white);font-size:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:18px;}
+  footer .foot-links li{margin-bottom:11px;font-size:14px;}
+  footer .foot-links a:hover{color:var(--gold-soft);}
+  footer p.desc{font-size:13.5px;margin-top:16px;max-width:280px;color:#8FA3B8;}
+  .socials{display:flex;gap:12px;margin-top:20px;}
+  .socials a{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:.25s;}
+  .socials a:hover{background:var(--orange);border-color:var(--orange);}
+  .socials svg{width:16px;height:16px;color:var(--white);}
+  .bottom-bar{display:flex;justify-content:space-between;align-items:center;padding-top:22px;flex-wrap:wrap;gap:12px;font-size:12.5px;font-family:'IBM Plex Mono',monospace;color:#6E8299;}
+  .back-top{
+    position:fixed;bottom:26px;right:26px;width:46px;height:46px;border-radius:50%;
+    background:var(--orange);border:none;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 22px rgba(232,114,12,0.4);opacity:0;pointer-events:none;transform:translateY(10px);
+    transition:.3s;z-index:900;
+  }
+  .back-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .back-top svg{width:18px;height:18px;color:var(--white);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .circuit-wrap{max-width:340px;margin-top:20px;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-badge{max-width:320px;margin:0 auto;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;row-gap:32px;}
+  }
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .burger{display:flex;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .proj-grid{grid-template-columns:1fr 1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .stat{border-bottom:1px solid var(--line);}
+    .step-row{grid-template-columns:1fr 1fr;row-gap:36px;}
+    .step-row::before{display:none;}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+    .hero{padding:150px 0 90px;}
+    .hero-meta{gap:20px;}
+    .service-grid{grid-template-columns:1fr;}
+    .proj-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .hero-cta{flex-direction:column;align-items:flex-start;}
+    .btn{width:100%;justify-content:center;}
+    nav.links.mobile-open{
+      display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+      background:var(--white);padding:20px 24px 26px;gap:0;border-bottom:1px solid var(--line-dark);
+      box-shadow:0 16px 24px rgba(7,27,46,0.08);
+    }
+    nav.links.mobile-open a{padding:13px 0;border-bottom:1px solid #EEF2F6;}
+    .nav-cta{display:none;}
+    nav.links.mobile-open .nav-cta{display:inline-flex;margin-top:14px;justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="siteHeader">
+  <div class="nav-inner">
+    <a href="#top" class="logo-group" aria-label="AZ Electrical Services Enterprise home">
+      <img src="_aZ_lOGO_ 01_.PNG.png" alt="AZ Electrical Services Enterprise" class="logo-mark">
+      <!-- <svg class="logo-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1568B8"/>
+            <stop offset="55%" stop-color="#0A2540"/>
+            <stop offset="100%" stop-color="#061829"/>
+          </linearGradient>
+          <linearGradient id="boltGrad" x1="20" y1="10" x2="44" y2="54" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#F5B700"/>
+            <stop offset="100%" stop-color="#E8720C"/>
+          </linearGradient>
+        </defs>
+        <polygon points="32,2 59,17 59,47 32,62 5,47 5,17" fill="url(#logoGrad)" stroke="#D4AF37" stroke-width="1.5"/>
+        <path d="M35 12 L20 34 H30 L27 52 L46 27 H35 L38 12 Z" fill="url(#boltGrad)"/>
+      </svg>
+      <span class="logo-word">AZ ELECTRICAL<span>Services Enterprise</span></span>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Get A Quote</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg-fade"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Licensed Electrical &amp; Electronic Engineering</span>
+      <h1>Power systems built to<br><em>hold the load.</em></h1>
+      <p class="lead">AZ Electrical Services Enterprise designs, installs, and maintains electrical and electronic systems for homes, industry, and commercial sites — engineered for safety, uptime, and code compliance.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Request A Quote</a>
+        <a href="#services" class="btn btn-ghost">View Services</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong class="mono" data-count="12">0</strong><span>Years Active</span></div>
+        <div><strong class="mono" data-count="340">0</strong><span>Projects Delivered</span></div>
+        <div><strong class="mono" data-count="99">0</strong><span>% On-Time Rate</span></div>
+      </div>
+    </div>
+    <div class="circuit-wrap" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <path class="circuit-line" d="M40 60 H160 V150 H320 V60 H360"/>
+        <path class="circuit-line" d="M40 200 H120 V330 H260 V260 H360"/>
+        <path class="circuit-line" d="M60 340 V280 H180 V200 H40"/>
+        <path class="circuit-line" d="M340 340 H220 V300"/>
+        <path class="circuit-pulse p1" d="M40 60 H160 V150 H320 V60 H360"/>
+        <path class="circuit-pulse p2" d="M40 200 H120 V330 H260 V260 H360"/>
+        <path class="circuit-pulse p3" d="M60 340 V280 H180 V200 H40"/>
+        <circle class="circuit-node lit" cx="40" cy="60" r="6"/>
+        <circle class="circuit-node" cx="160" cy="60" r="6"/>
+        <circle class="circuit-node lit" cx="320" cy="150" r="6"/>
+        <circle class="circuit-node" cx="360" cy="60" r="6"/>
+        <circle class="circuit-node" cx="120" cy="200" r="6"/>
+        <circle class="circuit-node lit" cx="260" cy="330" r="6"/>
+        <circle class="circuit-node" cx="360" cy="260" r="6"/>
+        <circle class="circuit-node" cx="60" cy="340" r="6"/>
+        <circle class="circuit-node lit" cx="180" cy="200" r="6"/>
+        <circle class="circuit-node" cx="220" cy="300" r="6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><strong class="mono" data-count="340">0</strong><span>Projects Completed</span></div>
+    <div class="stat"><strong class="mono" data-count="12">0</strong><span>Years Of Service</span></div>
+    <div class="stat"><strong class="mono" data-count="24">0</strong><span>Hr Emergency Response</span></div>
+    <div class="stat"><strong class="mono" data-count="98">0</strong><span>% Client Retention</span></div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">What We Do</span>
+      <h2>Engineering services, end to end</h2>
+      <p>From first sketch to final sign-off — installation, upgrades, and maintenance handled by qualified engineers.</p>
+    </div>
+    <div class="service-grid">
+
+      <div class="card reveal">
+        <span class="num mono">01</span>
+        <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M27 4 L14 27 H22 L19 44 L36 20 H27 L30 4 Z" fill="#E8720C"/></svg>
+        <h3>Electrical Installation</h3>
+        <p>Full wiring, distribution boards, and power circuits for new residential and commercial builds.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="num mono">02</span>
+        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#1568B8" stroke-width="2.4"><rect x="7" y="6" width="34" height="36" rx="3"/><line x1="14" y1="15" x2="34" y2="15"/><line x1="14" y1="23" x2="34" y2="23"/><line x1="14" y1="31" x2="26" y2="31"/><circle cx="34" cy="31" r="2.4" fill="#D4AF37" stroke="none"/></svg>
+        <h3>Industrial Wiring &amp; Panels</h3>
+        <p>Panel building, load balancing, and heavy-duty wiring for factories and industrial facilities.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="num mono">03</span>
+        <svg class="icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" fill="#F5B700"/><path d="M6 40 L18 26 H30 L42 40 Z" fill="#0A2540"/></svg>
+        <h3>Solar &amp; Inverter Systems</h3>
+        <p>Solar array design, inverter and battery installs, sized to your real consumption profile.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="num mono">04</span>
+        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#D4AF37" stroke-width="2.4"><circle cx="24" cy="24" r="7"/><path d="M24 6 V12 M24 36 V42 M6 24 H12 M36 24 H42 M11 11 L15 15 M33 33 L37 37 M37 11 L33 15 M15 33 L11 37"/></svg>
+        <h3>Automation &amp; Controls</h3>
+        <p>PLC programming, motor control, and smart automation for repeatable industrial processes.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="num mono">05</span>
+        <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M24 4 L40 12 V24 C40 34 33 41 24 44 C15 41 8 34 8 24 V12 Z" fill="#1568B8"/><path d="M18 24 L22 28 L30 18" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Maintenance &amp; Repairs</h3>
+        <p>Scheduled inspections, fault diagnosis, and rapid repair to keep systems compliant and running.</p>
+      </div>
+
+      <div class="card reveal">
+        <span class="num mono">06</span>
+        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#E8720C" stroke-width="2.4"><path d="M8 12 H40 M8 24 H40 M8 36 H28"/><circle cx="36" cy="36" r="5" fill="#D4AF37" stroke="none"/></svg>
+        <h3>Standards &amp; Compliance Audits</h3>
+        <p>Safety inspections and certification support so your site passes review the first time.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">How We Work</span>
+      <h2>A clear path from call to commissioning</h2>
+    </div>
+    <div class="step-row">
+      <div class="step reveal">
+        <div class="idx">01</div>
+        <h3>Consultation</h3>
+        <p>We assess your site, load requirements, and goals — then scope the right solution.</p>
+      </div>
+      <div class="step reveal">
+        <div class="idx">02</div>
+        <h3>Design &amp; Quote</h3>
+        <p>You get a detailed technical drawing, materials list, and fixed-price quote.</p>
+      </div>
+      <div class="step reveal">
+        <div class="idx">03</div>
+        <h3>Installation</h3>
+        <p>Certified technicians execute the work to code, with daily progress updates.</p>
+      </div>
+      <div class="step reveal">
+        <div class="idx">04</div>
+        <h3>Testing &amp; Handover</h3>
+        <p>Full load testing, safety checks, and documentation before final sign-off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag">Featured Work</span>
+      <h2>Recent project categories</h2>
+      <p>A sample of the work we take on — swap in your own project photography as your archive grows.</p>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <svg class="proj-visual" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#0A2540"/>
+          <g stroke="#1568B8" stroke-width="1.4" opacity="0.6" fill="none">
+            <path d="M0 60 H160 V120 H400"/><path d="M0 180 H120 V240 H320 V180 H400"/>
+          </g>
+          <circle cx="160" cy="120" r="5" fill="#F5B700"/><circle cx="320" cy="180" r="5" fill="#E8720C"/>
+        </svg>
+        <div class="overlay">
+          <span class="tagline">Residential</span>
+          <h3>Full-Home Rewiring</h3>
+          <p>Complete distribution board upgrade and rewiring, three-bedroom residence.</p>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <svg class="proj-visual" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#061829"/>
+          <g fill="none" stroke="#D4AF37" stroke-width="1.4" opacity="0.55">
+            <rect x="40" y="40" width="320" height="220" rx="6"/>
+            <line x1="40" y1="100" x2="360" y2="100"/><line x1="40" y1="160" x2="360" y2="160"/><line x1="40" y1="220" x2="360" y2="220"/>
+          </g>
+        </svg>
+        <div class="overlay">
+          <span class="tagline">Industrial</span>
+          <h3>Factory Panel Overhaul</h3>
+          <p>Load-balanced switchgear replacement for a mid-size manufacturing plant.</p>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <svg class="proj-visual" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="300" fill="#0A2540"/>
+          <g fill="#F5B700" opacity="0.85"><rect x="60" y="60" width="60" height="90"/><rect x="140" y="40" width="60" height="110"/><rect x="220" y="70" width="60" height="80"/></g>
+          <rect x="60" y="60" width="220" height="90" fill="none" stroke="#fff" stroke-opacity="0.15"/>
+        </svg>
+        <div class="overlay">
+          <span class="tagline">Renewable</span>
+          <h3>Solar + Inverter Rollout</h3>
+          <p>8kW solar array with battery backup for a commercial retail unit.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="about-badge">
+        <svg viewBox="0 0 64 64" fill="none">
+          <polygon points="32,2 59,17 59,47 32,62 5,47 5,17" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+          <path d="M35 12 L20 34 H30 L27 52 L46 27 H35 L38 12 Z" fill="url(#boltGrad)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="tag">About The Enterprise</span>
+      <h2>Engineering judgement, not just wiring</h2>
+      <p style="margin-top:16px;font-size:16px;">AZ Electrical Services Enterprise is built on one principle: an electrical system should be designed by someone who understands the load, not just the layout. Every project runs through proper calculation, code review, and testing before handover — whether it's a single home panel or a full industrial installation.</p>
+      <ul class="creds">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Licensed &amp; insured engineering team</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Code-compliant installation practices</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Residential, commercial &amp; industrial scope</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Post-installation support &amp; maintenance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <span class="tag">Client Feedback</span>
+    <div class="test-track" style="margin-top:18px;">
+      <div class="test-slide active">
+        <p class="quote">"They rewired our entire office over a weekend with zero downtime on Monday. Clean work, clear communication, fully documented."</p>
+        <p class="who mono">— Facilities Manager, Retail Group</p>
+      </div>
+      <div class="test-slide">
+        <p class="quote">"Our factory panel upgrade was overdue and honestly intimidating. AZ Electrical walked us through every step and passed inspection first try."</p>
+        <p class="who mono">— Plant Operations Lead</p>
+      </div>
+      <div class="test-slide">
+        <p class="quote">"Solar and inverter install has cut our outage headaches completely. Sizing was spot on for our actual usage."</p>
+        <p class="who mono">— Business Owner</p>
+      </div>
+    </div>
+    <div class="test-dots" id="testDots"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="tag">Get In Touch</span>
+      <h2 style="margin-bottom:22px;">Tell us about the job</h2>
+
+      <div class="info-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2Z"/></svg>
+        <div><h4>Call The Office</h4><p>+234 800 000 0000 &nbsp;·&nbsp; Mon–Sat, 8am–6pm</p></div>
+      </div>
+      <div class="info-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+        <div><h4>Email Us</h4><p>projects@azelectricalservices.com</p></div>
+      </div>
+      <div class="info-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div><h4>Service Area</h4><p>Lagos, Nigeria &nbsp;·&nbsp; On-site visits across the region</p></div>
+      </div>
+    </div>
+
+    <form class="quote reveal" id="quoteForm" novalidate>
+      <div class="form-row">
+        <div class="field" id="fName">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required>
+          <span class="field-error">Please enter your name.</span>
+        </div>
+        <div class="field" id="fPhone">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+234 800 000 0000" required>
+          <span class="field-error">Please enter a phone number.</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field" id="fEmail">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@email.com" required>
+          <span class="field-error">Enter a valid email address.</span>
+        </div>
+        <div class="field">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service">
+            <option>Electrical Installation</option>
+            <option>Industrial Wiring &amp; Panels</option>
+            <option>Solar &amp; Inverter Systems</option>
+            <option>Automation &amp; Controls</option>
+            <option>Maintenance &amp; Repairs</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field full" id="fMessage">
+          <label for="message">Project Details</label>
+          <textarea id="message" name="message" placeholder="Tell us about the site and what you need..." required></textarea>
+          <span class="field-error">Please add a few details about the job.</span>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Send Request</button>
+      <div class="form-success" id="formSuccess">Request received — we'll get back to you within one business day.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo-group">
+          <svg class="logo-mark" viewBox="0 0 64 64" fill="none">
+            <polygon points="32,2 59,17 59,47 32,62 5,47 5,17" fill="url(#logoGrad)" stroke="#D4AF37" stroke-width="1.5"/>
+            <path d="M35 12 L20 34 H30 L27 52 L46 27 H35 L38 12 Z" fill="url(#boltGrad)"/>
+          </svg>
+          <span class="logo-word" style="color:#fff;">AZ ELECTRICAL<span>Services Enterprise</span></span>
+        </div>
+        <p class="desc">Electrical &amp; electronic engineering services built on proper calculation, clean installation, and lasting compliance.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.5 1.6-1.5h1.7V3.4C16.5 3.3 15.4 3 14.2 3c-2.5 0-4.2 1.5-4.2 4.4V9.8H7.3V13h2.7v8h3.5Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21H18v-5.9c0-1.4-.03-3.2-1.98-3.2-1.98 0-2.28 1.5-2.28 3.1V21H10V9Z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="foot-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="foot-links">
+          <li><a href="#services">Installation</a></li>
+          <li><a href="#services">Industrial Wiring</a></li>
+          <li><a href="#services">Solar Systems</a></li>
+          <li><a href="#services">Maintenance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="foot-links">
+          <li>+234 800 000 0000</li>
+          <li>projects@azelectricalservices.com</li>
+          <li>Lagos, Nigeria</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span>© <span id="year"></span> AZ Electrical Services Enterprise. All rights reserved.</span>
+      <span>Engineered with precision.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+    backTop.classList.toggle('show', window.scrollY > 500);
+  });
+  backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('mobile-open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('mobile-open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+
+  // animated counters
+  const counters = document.querySelectorAll('[data-count]');
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      countIO.unobserve(el);
+    });
+  }, {threshold:0.4});
+  counters.forEach(c => countIO.observe(c));
+
+  // testimonial slider
+  const slides = document.querySelectorAll('.test-slide');
+  const dotsWrap = document.getElementById('testDots');
+  let activeSlide = 0;
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => showSlide(i));
+    dotsWrap.appendChild(dot);
+  });
+  function showSlide(i){
+    slides[activeSlide].classList.remove('active');
+    dotsWrap.children[activeSlide].classList.remove('active');
+    activeSlide = i;
+    slides[activeSlide].classList.add('active');
+    dotsWrap.children[activeSlide].classList.add('active');
+  }
+  setInterval(() => showSlide((activeSlide + 1) % slides.length), 5500);
+
+  // form validation
+  const form = document.getElementById('quoteForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+    const checks = [
+      {id:'fName', el: form.name, test: v => v.trim().length > 1},
+      {id:'fPhone', el: form.phone, test: v => v.trim().length > 6},
+      {id:'fEmail', el: form.email, test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},
+      {id:'fMessage', el: form.message, test: v => v.trim().length > 8},
+    ];
+    checks.forEach(c => {
+      const wrap = document.getElementById(c.id);
+      const ok = c.test(c.el.value);
+      wrap.classList.toggle('error', !ok);
+      if (!ok) valid = false;
+    });
+    if (valid) {
+      success.classList.add('show');
+      form.reset();
+      setTimeout(() => success.classList.remove('show'), 6000);
+    } else {
+      success.classList.remove('show');
+    }
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
